@@ -1,0 +1,19 @@
+{
+  "name": "untishax",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bernd-L/UntisHax.git"
+  },
+  "author": "Bernd-L <npm@bernd.pw>",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Bernd-L/UntisHax/issues"
+  },
+  "homepage": "https://github.com/Bernd-L/UntisHax#readme"
+}
