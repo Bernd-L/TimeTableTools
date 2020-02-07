@@ -3,6 +3,7 @@ import { log } from "console";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { Auth } from "../models/auth";
+import { Unit } from "../models/unit";
 
 export class UntisConnector {
   /**
@@ -22,30 +23,29 @@ export class UntisConnector {
     this.auth.url
   );
 
-  constructor() {
-    this.main();
-  }
-
   /**
-   * The main entry point of the application
+   * Retrieves and transforms data
    */
-  async main() {
+  async getTransformedTimeTable(): Promise<Unit[]> {
     // Perform the authentication
-    await this.untis.login();
+    // await this.untis.login();
 
     /**
      * My own timetable
      */
-    const timetable = await this.untis.getOwnTimetableForToday();
-    // const timetable = JSON.parse(
-    //   readFileSync(join(__dirname, "../../private/Untitled-1.json")).toString()
-    // );
+    // const lessons = await this.untis.getOwnTimetableForToday();
+    const lessons = JSON.parse(
+      readFileSync(join(__dirname, "../../private/Untitled-1.json")).toString()
+    ) as Lesson[];
 
-    const mapped = timetable.map((l: Lesson) =>
-      this.timeTransform(l.startTime)
-    );
-
-    log(mapped);
+    return lessons.map(l => {
+      return {
+        startDate: this.timeTransform(l.startTime),
+        endDate: this.timeTransform(l.endTime),
+        subjectName: l.su[0],
+        teacherName: l.te[0]
+      } as Unit;
+    }) as Unit[];
   }
 
   /**
