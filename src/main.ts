@@ -1,8 +1,9 @@
-import WebUntis from "webuntis";
+import WebUntis, { Lesson } from "webuntis";
 import { log } from "console";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { Auth } from "./models/auth";
+import { parse } from "date-fns";
 
 class Main {
   /**
@@ -41,10 +42,15 @@ class Main {
     // TODO Remove this log
     log(JSON.stringify(timetable));
 
-    // timetable.
+    timetable.map((l: Lesson, i: number) => {
+      const;
+      const na = parse(l.startTime + "", "yyyyMMdd", new Date());
+    });
   }
 
   private dateTransform = (untisDate: number) => {};
+  private addPaddingToNumber = (untisTime: number): string =>
+    untisTime >= 1000 ? "0" + untisTime : untisTime;
 }
 
 // Start the program

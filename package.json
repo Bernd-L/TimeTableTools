@@ -22,7 +22,8 @@
   "homepage": "https://github.com/Bernd-L/UntisHax#readme",
   "dependencies": {
     "source-map-support": "^0.5.16",
-    "webuntis": "^1.8.2"
+    "webuntis": "^1.8.2",
+    "date-fns": "^2.2.1"
   },
   "devDependencies": {
     "@types/node": "^13.7.0"
