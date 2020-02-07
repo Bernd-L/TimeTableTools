@@ -2,5 +2,7 @@
   "name": "TimeTableTools",
   "description": "Countdown for the current period",
   "uuid": "TimeTableTools@bernd.l",
-  "extension-id": "TimeTableTools"
+  "extension-id": "TimeTableTools",
+  "url": "https://github.com/Bernd-L/TimeTableTools",
+  "shell-version": "3.34.2"
 }
