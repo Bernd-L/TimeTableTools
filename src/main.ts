@@ -41,12 +41,10 @@ class Main {
     // TODO Remove this log
     log(JSON.stringify(timetable));
 
-    timetable.
+    // timetable.
   }
 
-  private dateTransform = (untisDate: number) => {
-
-  }
+  private dateTransform = (untisDate: number) => {};
 }
 
 // Start the program
