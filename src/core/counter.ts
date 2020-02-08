@@ -64,7 +64,7 @@ export class Counter {
 
   private getRenderedString = (currentUnit?: Unit, nextUnit?: Unit): string => {
     // Handle undefined units
-    if (currentUnit === undefined) return "Nothing active at this moment";
+    if (currentUnit === undefined) return "Nothing active at the moment";
 
     /**
      * The current moment in time
