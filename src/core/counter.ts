@@ -77,11 +77,10 @@ export class Counter {
     const now = new Date();
 
     const newLocal = currentUnit.endDate.getTime() - now.getTime();
-    console.log(newLocal);
 
     const delta = new Date(newLocal);
 
-    console.log(this.getColonStringFromDeltaDate(delta));
+    // console.log(this.getColonStringFromDeltaDate(delta));
 
     return (
       this.getFancyStringFromDeltaDate(delta) +
