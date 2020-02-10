@@ -63,10 +63,12 @@ export class UntisConnector {
    */
   private timeTransform = (untisTime: number): Date =>
     new Date(
-      new Date().setHours(
-        this.getHours(untisTime),
-        untisTime - this.getHours(untisTime) * 100
-      )
+      new Date(
+        new Date().setHours(
+          this.getHours(untisTime),
+          untisTime - this.getHours(untisTime) * 100
+        )
+      ).setSeconds(0)
     );
 
   private addPaddingToNumber = (untisTime: number): string =>
