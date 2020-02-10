@@ -80,7 +80,7 @@ export class Counter {
 
     return (
       this.getFancyStringFromDeltaDate(delta) +
-      ` left in ${currentUnit.subjectName.name} with ${currentUnit.subjectName.name}; next up is ` +
+      ` left in ${currentUnit.subjectName.name} with ${currentUnit.teacherName.name}; next up is ` +
       (nextUnit === undefined
         ? "nothing"
         : `${nextUnit.subjectName.name} with ${
