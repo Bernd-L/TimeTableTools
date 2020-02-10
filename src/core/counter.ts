@@ -33,25 +33,16 @@ export class Counter {
    * Returns the unit which is active at the specified moment in time
    */
   private getCurrentUnitForTime = (now: Date): Unit | undefined =>
-    this.units.find(unit => {
-      return now >= unit.startDate && now < unit.endDate;
-    });
+    this.units.find(unit => now >= unit.startDate && now < unit.endDate);
 
   /**
    * Returns the unit which will be active after the current one,
    * or the current one if there is none after it
    */
   private getNextUnitNoUndefined = (currentUnit: Unit): Unit =>
-    this.units.reduce(
-      (previousValue: Unit, currentValue: Unit): Unit =>
-        // Get the earliest one...
-        previousValue.startDate > currentValue.startDate &&
-        // ...after the current one
-        currentValue.startDate > currentUnit.startDate
-          ? currentValue
-          : previousValue,
-      currentUnit
-    );
+    this.units
+      .filter(unit => unit.startDate > currentUnit.startDate)
+      .reduce((acc, unit) => (acc.startDate < unit.startDate ? acc : unit));
 
   /**
    * Returns the unit which will be active after the current one,
