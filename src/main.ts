@@ -1,6 +1,6 @@
 import { UntisConnector } from "./core/untis-connector";
 import { Counter } from "./core/counter";
-
+process.title = "HTTP Server";
 const main = async () => {
   /**
    * The transformed time table for the current day

@@ -1,4 +1,5 @@
 import { Unit } from "../models/unit";
+import { Title } from "./title";
 
 export class Counter {
   /**
@@ -19,9 +20,13 @@ export class Counter {
      */
     const currentUnit = this.getCurrentUnitForTime(new Date());
 
-    console.log(
-      this.getRenderedString(currentUnit, this.getNextUnit(currentUnit))
+    const countString = this.getRenderedString(
+      currentUnit,
+      this.getNextUnit(currentUnit)
     );
+
+    console.log(countString);
+    Title.setTitle(countString);
   };
 
   /**
