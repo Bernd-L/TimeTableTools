@@ -39,9 +39,9 @@ export class Counter {
    * Returns the unit which will be active after the current one,
    * or the current one if there is none after it
    */
-  private getNextUnitNoUndefined = (currentUnit: Unit): Unit =>
+  private getNextUnitForDate = (now: Date): Unit =>
     this.units
-      .filter(unit => unit.startDate > currentUnit.startDate)
+      .filter(unit => unit.startDate > now)
       .reduce((acc, unit) => (acc.startDate < unit.startDate ? acc : unit));
 
   /**
@@ -50,17 +50,25 @@ export class Counter {
    */
   private getNextUnit = (currentUnit?: Unit): Unit | undefined => {
     // Handle undefined units
-    if (currentUnit === undefined) return undefined;
+    // if (currentUnit === undefined) return undefined;
 
-    const nextUnit = this.getNextUnitNoUndefined(currentUnit);
+    const nextUnit = this.getNextUnitForDate(new Date());
 
     // Avoid returning the current unit
     return currentUnit === nextUnit ? undefined : nextUnit;
   };
 
   private getRenderedString = (currentUnit?: Unit, nextUnit?: Unit): string => {
+    const nextUp =
+      nextUnit === undefined
+        ? "nothing"
+        : `${nextUnit.subjectName.name} with ${
+            nextUnit.teacherName.name
+          } at ${nextUnit.startDate.getHours()}:${nextUnit.startDate.getMinutes()}.`;
+
     // Handle undefined units
-    if (currentUnit === undefined) return "Nothing active at the moment";
+    if (currentUnit === undefined)
+      return "Nothing active at the moment; next up is " + nextUp;
 
     const delta = new Date(
       currentUnit.endDate.getTime() - new Date().getTime()
@@ -69,11 +77,7 @@ export class Counter {
     return (
       this.getFancyStringFromDeltaDate(delta) +
       ` left in ${currentUnit.subjectName.name} with ${currentUnit.teacherName.name}; next up is ` +
-      (nextUnit === undefined
-        ? "nothing"
-        : `${nextUnit.subjectName.name} with ${
-            nextUnit.teacherName.name
-          } at ${nextUnit.startDate.getHours()}:${nextUnit.startDate.getMinutes()}.`)
+      nextUp
     );
   };
 
