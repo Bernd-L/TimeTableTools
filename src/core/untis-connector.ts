@@ -6,6 +6,8 @@ import { Auth } from "../models/auth";
 import { Unit } from "../models/unit";
 
 export class UntisConnector {
+  constructor(private useTestData: boolean) {}
+
   /**
    * The authentication data required for the API
    */
@@ -28,15 +30,18 @@ export class UntisConnector {
    */
   async getTransformedTimeTable(): Promise<Unit[]> {
     // Perform the authentication
-    // await this.untis.login();
+    if (!this.useTestData) await this.untis.login();
 
     /**
      * My own timetable
      */
-    // const lessons = await this.untis.getOwnTimetableForToday();
-    const lessons = JSON.parse(
-      readFileSync(join(__dirname, "../../private/Untitled-1.json")).toString()
-    ) as Lesson[];
+    const lessons = !this.useTestData
+      ? await this.untis.getOwnTimetableForToday()
+      : (JSON.parse(
+          readFileSync(
+            join(__dirname, "../../private/Untitled-1.json")
+          ).toString()
+        ) as Lesson[]);
 
     return lessons.map(l => {
       return {

@@ -5,7 +5,9 @@ const main = async () => {
   /**
    * The transformed time table for the current day
    */
-  const units = await new UntisConnector().getTransformedTimeTable();
+  const units = await new UntisConnector(
+    process.argv[2] === "test"
+  ).getTransformedTimeTable();
 
   console.log(units);
 
