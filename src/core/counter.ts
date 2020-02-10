@@ -25,6 +25,7 @@ export class Counter {
       this.getNextUnit(currentUnit)
     );
 
+    console.log(new Date().toTimeString());
     console.log(countString);
     Title.setTitle(countString);
   };
@@ -67,7 +68,30 @@ export class Counter {
      */
     const now = new Date();
 
-    const newLocal = currentUnit.endDate.getTime() - now.getTime();
+    const newLocal =
+      currentUnit.endDate.getTime() -
+      now.getTime() -
+      new Date(0).setUTCSeconds(3);
+
+    // 27 seconds behind
+    // 3 seconds ahead
+
+    /*
+      11:54:30 GMT+0100 (Central European Standard Time)
+      0h 31m 13s left in SYP1S with SL; next up is NWL3 with SU at 13:15.
+      &
+      11:55:00 GMT+0100 (Central European Standard Time)
+      0h 30m 43s left in SYP1S with SL; next up is NWL3 with SU at 13:15.
+      &
+      11:56:13 GMT+0100 (Central European Standard Time)
+      0h 29m 30s left in SYP1S with SL; next up is NWL3 with SU at 13:15.
+      ---
+      11:59:06 GMT+0100 (Central European Standard Time)
+      0h 26m 30s left in SYP1S with SL; next up is NWL3 with SU at 13:15.
+      ---
+      12:03:01 GMT+0100 (Central European Standard Time)
+      0h 22m 0s left in SYP1S with SL; next up is NWL3 with SU at 13:15.
+    */
 
     const delta = new Date(newLocal);
 
