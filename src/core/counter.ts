@@ -1,5 +1,7 @@
 import { Unit } from "../models/unit";
 import { Title } from "./title";
+import { writeFileSync } from "fs";
+import { join } from "path";
 
 export class Counter {
   /**
@@ -12,6 +14,10 @@ export class Counter {
 
   public countInCliBlocking = (): void => {
     setInterval(() => this.countInCliOnce(), this.interval * 1000);
+  };
+
+  public countToFileBlocking = (): void => {
+    setInterval(() => this.countToFileOnce(), this.interval * 1000);
   };
 
   private countInCliOnce = () => {
@@ -27,6 +33,22 @@ export class Counter {
 
     console.log(countString);
     Title.setTitle(countString);
+  };
+
+  private countToFileOnce = () => {
+    /**
+     * The unit which is active at this moment in time
+     */
+    const currentUnit = this.getCurrentUnitForTime(new Date());
+
+    const countString = this.getRenderedString(
+      currentUnit,
+      this.getNextUnit(currentUnit)
+    );
+
+    console.log(countString);
+    Title.setTitle(countString);
+    writeFileSync(join(__dirname, "../../private/status.txt"), countString);
   };
 
   /**
@@ -52,7 +74,13 @@ export class Counter {
     // Handle undefined units
     // if (currentUnit === undefined) return undefined;
 
-    const nextUnit = this.getNextUnitForDate(new Date());
+    let nextUnit;
+
+    try {
+      nextUnit = this.getNextUnitForDate(new Date());
+    } catch (err) {
+      nextUnit = undefined;
+    }
 
     // Avoid returning the current unit
     return currentUnit === nextUnit ? undefined : nextUnit;

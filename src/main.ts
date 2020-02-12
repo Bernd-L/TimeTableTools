@@ -6,9 +6,10 @@ const main = async () => {
    * The transformed time table for the current day
    */
   const units = await new UntisConnector(
-    process.argv[2] === "test"
+    process.argv[2] === "test" || process.argv[3] === "test"
   ).getTransformedTimeTable();
 
+  // TODO remove this log
   console.log(units);
 
   /**
@@ -17,7 +18,15 @@ const main = async () => {
   const counter = new Counter(1, units);
 
   // Start counting
-  counter.countInCliBlocking();
+  switch (process.argv[2]) {
+    case "file":
+      counter.countToFileBlocking();
+      break;
+    case "cli":
+    default:
+      counter.countInCliBlocking();
+      break;
+  }
 };
 
 // Start the program

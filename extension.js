@@ -51,7 +51,15 @@ const clearInterval = function(id) {
 // Start of app-logic
 
 const GLib = imports.gi.GLib;
-// let fileContents = String(GLib.file_get_contents("/path/to/yourFile")[1]);
+
+function getString() {
+  return String(
+    GLib.file_get_contents(
+      "/home/bernd/.local/share/gnome-shell/extensions/time-table-tools@gnome-extensions.bernd.pw/private/status.txt"
+    )[1] + "  "
+  );
+}
+
 // End of app-logic
 
 // Start of extension-logic
@@ -81,15 +89,13 @@ function init() {
 
   setText("0h 0m 42m remaining");
   // button.connect("enter-event", _moreSnow);
-  button.connect("button-press-event", _snow);
+  button.connect("button-press-event", onButtonPress);
 
   myInterval = 1;
 
   myInterval = setInterval(() => {
-    setText("hello there" + myInterval);
+    setText(getString());
   }, 1000);
-
-  prepare();
 }
 
 function setText(text) {
@@ -98,8 +104,8 @@ function setText(text) {
   button.set_child(label_2);
 }
 
-function _snow() {
-  setText("0h 42m 42m remaining");
+function onButtonPress() {
+  setText("Bernd-L's TimeTableTools");
 }
 
 function enable() {
