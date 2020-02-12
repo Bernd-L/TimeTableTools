@@ -1,0 +1,9 @@
+{
+  "uuid": "time-table-tools@gnome-extensions.bernd.pw",
+  "name": "TimeTableTools",
+  "description": "Countdown for the current period",
+  "version": 1,
+  "shell-version": ["3.34.2"],
+  "extension-id": "TimeTableTools",
+  "url": "https://github.com/Bernd-L/TimeTableTools"
+}

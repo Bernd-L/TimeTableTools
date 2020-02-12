@@ -108,5 +108,5 @@ private
 
 
 # Extension build files
-extension
-!extension/metadata.json
+extension/*
+!/extension/metadata.json
