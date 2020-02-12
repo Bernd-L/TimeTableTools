@@ -1,8 +1,8 @@
 {
-  "name": "untishax",
+  "name": "time-table-tools",
   "version": "0.1.0",
   "description": "",
-  "main": "dist/cli/main.js",
+  "main": "dist/main.js",
   "scripts": {
     "prestart": "npm run build",
     "build": "tsc",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Bernd-L/UntisHax.git"
+    "url": "git+https://github.com/Bernd-L/TimeTableTools.git"
   },
   "author": "Bernd-L <npm@bernd.pw>",
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/Bernd-L/UntisHax/issues"
+    "url": "https://github.com/Bernd-L/TimeTableTools/issues"
   },
-  "homepage": "https://github.com/Bernd-L/UntisHax#readme",
+  "homepage": "https://github.com/Bernd-L/TimeTableTools#readme",
   "dependencies": {
     "source-map-support": "^0.5.16",
     "webuntis": "^1.8.2"

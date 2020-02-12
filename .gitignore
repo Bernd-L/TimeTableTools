@@ -105,8 +105,3 @@ dist
 
 # Confidential files
 private
-
-
-# Extension build files
-extension/*
-!/extension/metadata.json

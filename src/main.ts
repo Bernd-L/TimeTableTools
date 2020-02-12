@@ -1,5 +1,5 @@
-import { UntisConnector } from "../core/untis-connector";
-import { Counter } from "../core/counter";
+import { UntisConnector } from "./core/untis-connector";
+import { Counter } from "./core/counter";
 
 const main = async () => {
   /**
