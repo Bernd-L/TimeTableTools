@@ -1,6 +1,9 @@
 import { UntisConnector } from "./core/untis-connector";
 import { Counter } from "./core/counter";
-process.title = "HTTP Server";
+
+// Include the metadata in the build
+import "./metadata.json";
+
 const main = async () => {
   /**
    * The transformed time table for the current day
