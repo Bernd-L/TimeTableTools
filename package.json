@@ -2,7 +2,7 @@
   "name": "untishax",
   "version": "0.1.0",
   "description": "",
-  "main": "dist/main.js",
+  "main": "dist/cli/main.js",
   "scripts": {
     "prestart": "npm run build",
     "build": "tsc",

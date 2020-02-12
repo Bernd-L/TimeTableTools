@@ -1,8 +1,5 @@
-import { UntisConnector } from "./core/untis-connector";
-import { Counter } from "./core/counter";
-
-// Include the metadata in the build
-import "./metadata.json";
+import { UntisConnector } from "../core/untis-connector";
+import { Counter } from "../core/counter";
 
 const main = async () => {
   /**
