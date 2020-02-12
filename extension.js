@@ -50,27 +50,8 @@ const clearInterval = function(id) {
 
 // Start of app-logic
 
-function prepare() {
-  const units = [
-    {
-      subjectName: {
-        id: 1,
-        name: "Sub1",
-        longname: "Subject 1"
-      },
-      teacherName: {
-        id: 2,
-        name: "Te1",
-        longname: "Teacher 1"
-      },
-      startDate: new Date(new Date().setHours(7)),
-      endDate: new Date(new Date().setHours(20))
-    }
-  ];
-
-  // const counter = new Counter(1, units);
-}
-
+const GLib = imports.gi.GLib;
+// let fileContents = String(GLib.file_get_contents("/path/to/yourFile")[1]);
 // End of app-logic
 
 // Start of extension-logic
