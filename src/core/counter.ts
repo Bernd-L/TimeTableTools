@@ -1,5 +1,4 @@
 import { Unit } from "../models/unit";
-import { Title } from "./title";
 
 export class Counter {
   /**
@@ -26,7 +25,6 @@ export class Counter {
     );
 
     console.log(countString);
-    Title.setTitle(countString);
   };
 
   /**

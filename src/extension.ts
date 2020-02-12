@@ -1,5 +1,5 @@
-import { Counter } from "../core/counter";
-import { Unit } from "../models/unit";
+import { Counter } from "./core/counter";
+import { Unit } from "./models/unit";
 
 console.log("This is the main entry point for this GNOME extension");
 
