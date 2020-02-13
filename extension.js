@@ -87,15 +87,10 @@ function init() {
     text: "0h 0m 42m remaining"
   });
 
-  setText("0h 0m 42m remaining");
   // button.connect("enter-event", _moreSnow);
   button.connect("button-press-event", onButtonPress);
 
   myInterval = 1;
-
-  myInterval = setInterval(() => {
-    setText(getString());
-  }, 1000);
 }
 
 function setText(text) {
@@ -110,6 +105,10 @@ function onButtonPress() {
 
 function enable() {
   Main.panel._centerBox.insert_child_at_index(button, 0);
+
+  myInterval = setInterval(() => {
+    setText(getString());
+  }, 1000);
 }
 
 function disable() {
