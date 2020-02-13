@@ -53,11 +53,7 @@ const clearInterval = function(id) {
 const GLib = imports.gi.GLib;
 
 function getString() {
-  return String(
-    GLib.file_get_contents(
-      "/home/bernd/.local/share/gnome-shell/extensions/time-table-tools@gnome-extensions.bernd.pw/private/status.txt"
-    )[1] + "  "
-  );
+  return String(GLib.file_get_contents("/tmp/ttt.txt")[1] + "  ");
 }
 
 // End of app-logic
@@ -104,7 +100,7 @@ function onButtonPress() {
 }
 
 function enable() {
-  Main.panel._centerBox.insert_child_at_index(button, 0);
+  Main.panel._rightBox.insert_child_at_index(button, 0);
 
   myInterval = setInterval(() => {
     setText(getString());
@@ -116,7 +112,7 @@ function disable() {
   clearInterval(myInterval);
 
   // Remove the button
-  Main.panel._centerBox.remove_child(button);
+  Main.panel._rightBox.remove_child(button);
 }
 
 // End of extension-logic

@@ -48,7 +48,8 @@ export class Counter {
 
     console.log(countString);
     Title.setTitle(countString);
-    writeFileSync(join(__dirname, "../../private/status.txt"), countString);
+    writeFileSync(join("/tmp/ttt.txt"), countString);
+    // writeFileSync(join(__dirname, "../../private/status.txt"), countString);
   };
 
   /**
